@@ -61,7 +61,7 @@ response-1:
 ```json
 {
     "result" :3.6,
-    "operator" :"DIVIDE",
+    "operator": "DIVIDE",
     "a": 4.5,
     "b": 1.25
 }
