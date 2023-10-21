@@ -11,17 +11,17 @@
 
 ### Parameters
 
-`a`: `f64` Left operand
-`b`: `f64` Right operand
+- `a`: `f64` Left operand
+- `b`: `f64` Right operand
 
 ### Returns
 
 JSON object.
 
-```json
+```rust
 {
     result: Option<f64>,
-    operand Operator,
+    operand: Operator,
     a: f64,
     b: f64,
 }
