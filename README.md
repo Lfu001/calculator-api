@@ -1,5 +1,7 @@
 # Calculator API [![CI](https://github.com/Lfu001/calculator-api/actions/workflows/rust.yml/badge.svg)](https://github.com/Lfu001/calculator-api/actions/workflows/rust.yml)
 
+1000 digit precision calculator API.
+
 ## Usage
 
 | Operator | API endpoint    |
@@ -11,19 +13,19 @@
 
 ### Parameters
 
-- `a`: `f64` Left operand
-- `b`: `f64` Right operand
+- `a`: Left operand
+- `b`: Right operand
 
 ### Returns
 
 JSON object.
 
-```rust
+```ts
 {
-    result: Option<f64>,
+    result: Number?,
     operand: Operator,
-    a: Option<f64>,
-    b: Option<f64>,
+    a: Number?,
+    b: Number?,
 }
 ```
 
