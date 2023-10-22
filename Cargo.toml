@@ -18,8 +18,8 @@ name = "adder"
 path = "api/adder.rs"
 
 [[bin]]
-name = "subtracter"
-path = "api/subtracter.rs"
+name = "subtractor"
+path = "api/subtractor.rs"
 
 [[bin]]
 name = "multiplier"
