@@ -70,7 +70,7 @@ response-1:
 request-2:
 
 ```text
-/divide?a=7.3&b=0
+/api/divider?a=7.3&b=0
 ```
 
 response-2:
