@@ -1,3 +1,4 @@
+use bigdecimal::BigDecimal;
 use serde::Serialize;
 use serde_json::json;
 use std::collections::HashMap;
@@ -16,19 +17,14 @@ pub enum Operator {
 #[derive(Serialize)]
 #[serde(crate = "serde")]
 pub struct MathResponse {
-    result: Option<f64>,
+    result: String,
     operator: Operator,
-    a: Option<f64>,
-    b: Option<f64>,
+    a: String,
+    b: String,
 }
 
 impl MathResponse {
-    pub fn new(
-        result: Option<f64>,
-        operator: Operator,
-        a: Option<f64>,
-        b: Option<f64>,
-    ) -> MathResponse {
+    pub fn new(result: String, operator: Operator, a: String, b: String) -> MathResponse {
         MathResponse {
             result,
             operator,
@@ -38,19 +34,26 @@ impl MathResponse {
     }
 }
 
-fn parse_string_to_f64(s: Option<&String>) -> Option<f64> {
+fn parse_string_to_big_decimal(s: Option<&String>) -> Option<BigDecimal> {
     match s {
-        Some(str_ref) => str_ref.parse::<f64>().ok(),
+        Some(str_ref) => str_ref.parse::<BigDecimal>().ok(),
         _ => None,
     }
 }
 
-pub fn extract_queries(req: &Request) -> (Option<f64>, Option<f64>) {
+pub fn extract_queries(req: &Request) -> (Option<BigDecimal>, Option<BigDecimal>) {
     let parsed_url = Url::parse(&req.uri().to_string()).unwrap();
     let hash_query: HashMap<String, String> = parsed_url.query_pairs().into_owned().collect();
-    let a = parse_string_to_f64(hash_query.get("a"));
-    let b = parse_string_to_f64(hash_query.get("b"));
+    let a = parse_string_to_big_decimal(hash_query.get("a"));
+    let b = parse_string_to_big_decimal(hash_query.get("b"));
     (a, b)
+}
+
+pub fn option_big_decimal_to_string(val: Option<BigDecimal>) -> String {
+    match val {
+        Some(number) => number.to_string(),
+        None => String::from("null"),
+    }
 }
 
 pub fn build_json_response(res: &MathResponse) -> Result<Response<Body>, Error> {
