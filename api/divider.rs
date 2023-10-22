@@ -14,9 +14,9 @@ pub async fn handler(req: Request) -> Result<Response<Body>, Error> {
     let result = match (&a, &b) {
         (Some(a_val), Some(b_val)) => {
             if b_val.is_zero() {
-                Some(a_val / b_val)
-            } else {
                 None
+            } else {
+                Some(a_val / b_val)
             }
         }
         _ => None,
