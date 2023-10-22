@@ -63,7 +63,7 @@ response-1:
     "a": 4.5,
     "b": 1.25,
     "operator": "DIVIDE",
-    "result" :3.6
+    "result": 3.6
 }
 ```
 
