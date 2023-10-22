@@ -2,12 +2,12 @@
 
 ## Usage
 
-| Operator | API endpoint |
-| -------- | ------------ |
-| Add      | /add         |
-| Subtract | /subtract    |
-| Multiply | /multiply    |
-| Divide   | /divide      |
+| Operator | API endpoint    |
+| -------- | --------------- |
+| +        | /api/adder      |
+| -        | /api/subtractor |
+| *        | /api/multiplier |
+| /        | /api/divider    |
 
 ### Parameters
 
@@ -22,8 +22,8 @@ JSON object.
 {
     result: Option<f64>,
     operand: Operator,
-    a: f64,
-    b: f64,
+    a: Option<f64>,
+    b: Option<f64>,
 }
 ```
 
@@ -34,17 +34,17 @@ JSON object.
 request:
 
 ```text
-/add?a=1.5&b=2.3
+/api/adder?a=1.5&b=2.3
 ```
 
 response:
 
 ```json
 {
-    "result": 3.8,
-    "operator": "ADD",
     "a": 1.5,
-    "b": 2.3
+    "b": 2.3,
+    "operator": "ADD",
+    "result": 3.8
 }
 ```
 
@@ -53,17 +53,17 @@ response:
 request-1:
 
 ```text
-/divide?a=4.5&b=1.25
+/api/divider?a=4.5&b=1.25
 ```
 
 response-1:
 
 ```json
 {
-    "result" :3.6,
-    "operator": "DIVIDE",
     "a": 4.5,
-    "b": 1.25
+    "b": 1.25,
+    "operator": "DIVIDE",
+    "result" :3.6
 }
 ```
 
@@ -77,10 +77,10 @@ response-2:
 
 ```json
 {
-    "result": null,
-    "operator": "DIVIDE",
     "a": 7.3,
-    "b": 0.0
+    "b": 0.0,
+    "operator": "DIVIDE",
+    "result": null
 }
 ```
 

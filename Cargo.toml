@@ -1,13 +1,30 @@
 [package]
 name = "calculator-api"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-vercel_runtime = { version = "1.1.0" }
+http = "0.2.9"
+serde =  "1.0.189"
+serde_json = {version = "1.0.107", features = ["raw_value"]}
+tokio = {version = "1.33.0", features = ["macros"]}
+url = "2.4.1"
+vercel_runtime = "1.1.0"
 
-[dependencies.rocket]
-version = "0.5.0-rc.3"
-features = ["json"]
+[[bin]]
+name = "adder"
+path = "api/adder.rs"
+
+[[bin]]
+name = "subtractor"
+path = "api/subtractor.rs"
+
+[[bin]]
+name = "multiplier"
+path = "api/multiplier.rs"
+
+[[bin]]
+name = "divider"
+path = "api/divider.rs"
