@@ -1,3 +1,4 @@
-/*
-!api
-!Cargo.toml
+target/
+.vercel/
+.github/
+src/
